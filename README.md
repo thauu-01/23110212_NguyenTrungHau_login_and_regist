@@ -1,1 +1,6 @@
-# 23110212_NguyenTrungHau_login_and_regist
+BÀI TẬP CÁ NHÂN LẬP TRÌNH WEB ( login and regis )
+
+Tên: Nguyễn Trung Hậu
+
+MSSV: 23110212
+
