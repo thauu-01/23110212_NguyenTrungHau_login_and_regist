@@ -5,19 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UserDaoImpl implements UserDao {
-    private Connection conn = null;
-    private PreparedStatement ps = null;
-    private ResultSet rs = null;
 
     @Override
     public User get(String username) {
-        String sql = "SELECT * FROM [Users] WHERE username = ?";  
+        String sql = "SELECT * FROM [Users] WHERE username = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
-            conn = new DBConnection().getConnectionW();  
+            conn = new DBConnection().getConnectionW();
             ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt("id"));
                 user.setEmail(rs.getString("email"));
@@ -42,5 +42,30 @@ public class UserDaoImpl implements UserDao {
             }
         }
         return null;
+    }
+
+    @Override
+    public void insert(User user) {
+        String sql = "INSERT INTO [Users] (email, username, password) VALUES (?, ?, ?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = new DBConnection().getConnectionW();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getUserName());
+            ps.setString(3, user.getPassWord());
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+                if (conn != null) conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

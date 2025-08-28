@@ -16,4 +16,14 @@ public class UserServiceImpl implements UserService {
     public User get(String username) {
         return userDao.get(username);
     }
+
+    @Override
+    public void register(String username, String password, String email) {
+        User user = new User();
+        user.setUserName(username);
+        user.setPassWord(password);
+        user.setEmail(email);
+    
+        userDao.insert(user);
+    }
 }
