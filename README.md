@@ -1,4 +1,4 @@
-BÀI TẬP CÁ NHÂN LẬP TRÌNH WEB ( login and regis )
+BÀI TẬP CÁ NHÂN LẬP TRÌNH WEB ( login and regist )
 
 Tên: Nguyễn Trung Hậu
 
