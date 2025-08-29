@@ -8,9 +8,9 @@ public class DBConnection {
     private final String serverName = "localhost";
     private final String dbName = "Online";
     private final String portNumber = "1433";
-    private final String instance = ""; // Để trống cho instance mặc định
+    private final String instance = ""; 
 
-    // Kết nối với Windows Authentication, tắt mã hóa
+   
     public Connection getConnectionW() throws Exception {
         String url = "jdbc:sqlserver://" + serverName + "\\" + instance + ":" + portNumber + ";integratedSecurity=true;databaseName=" + dbName + ";encrypt=false";
         if (instance == null || instance.trim().isEmpty()) {
@@ -20,7 +20,6 @@ public class DBConnection {
         return DriverManager.getConnection(url);
     }
 
-    // Test kết nối
     public static void main(String[] args) {
         try {
             System.out.println(new DBConnection().getConnectionW());
