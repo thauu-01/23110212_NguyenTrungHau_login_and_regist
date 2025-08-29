@@ -15,11 +15,11 @@ public class User implements Serializable {
     private String phone;
     private Date createdDate;
 
-    // Constructors
+    // Tạo constructor rỗng
     public User() {}
 
-    public User(int id, String email, String userName, String fullName, String passWord, String avatar, int roleid, String phone, Date createdDate) {
-        this.id = id;
+    // Tạo constructor đầy đủ (tùy chọn)
+    public User(String email, String userName, String fullName, String passWord, String avatar, int roleid, String phone, Date createdDate) {
         this.email = email;
         this.userName = userName;
         this.fullName = fullName;
@@ -30,7 +30,7 @@ public class User implements Serializable {
         this.createdDate = createdDate;
     }
 
-    // Getters and Setters
+    // Getters và Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getEmail() { return email; }

@@ -1,8 +1,9 @@
 package chucnangdangnhap;
 
 public class UserServiceImpl implements UserService {
-    private UserDao userDao = new UserDaoImpl();
+    UserDao userDao = new UserDaoImpl();
 
+    // Các hàm từ ví dụ 1
     @Override
     public User login(String username, String password) {
         User user = this.get(username);
@@ -17,13 +18,14 @@ public class UserServiceImpl implements UserService {
         return userDao.get(username);
     }
 
+    // Implement hàm mới
     @Override
-    public void register(String username, String password, String email) {
-        User user = new User();
-        user.setUserName(username);
-        user.setPassWord(password);
-        user.setEmail(email);
-    
+    public void register(User user) {
         userDao.insert(user);
+    }
+
+    @Override
+    public boolean checkExistUsername(String username) {
+        return userDao.checkExistUsername(username);
     }
 }
