@@ -50,10 +50,10 @@ public class UserDaoImpl implements UserDao {
             ps.setString(2, user.getUserName());
             ps.setString(3, user.getFullName());
             ps.setString(4, user.getPassWord());
-            ps.setString(5, user.getAvatar()); // Có thể set null nếu không có avatar
-            ps.setInt(6, user.getRoleid()); // Mặc định roleid = 3 cho user thường
+            ps.setString(5, user.getAvatar()); 
+            ps.setInt(6, user.getRoleid()); 
             ps.setString(7, user.getPhone());
-            ps.setDate(8, new java.sql.Date(new Date().getTime())); // Ngày tạo hiện tại
+            ps.setDate(8, new java.sql.Date(new Date().getTime())); 
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
