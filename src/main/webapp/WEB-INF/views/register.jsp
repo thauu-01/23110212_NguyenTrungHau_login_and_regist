@@ -5,12 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Đăng Ký</title>
-    <!-- Bootstrap CSS -->
+  
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for icons -->
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
-        /* CSS tùy chỉnh tương tự login.jsp */
+       
         .register-container {
             max-width: 400px;
             margin: 50px auto;
@@ -36,7 +36,7 @@
             border: none;
         }
         .register-container h2 {
-            font-size: 1.5rem; /* Kích thước nhỏ hơn một chút, tương tự login */
+            font-size: 1.5rem;
             text-center: center;
         }
     </style>
