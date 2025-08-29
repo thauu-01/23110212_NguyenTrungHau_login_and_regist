@@ -16,7 +16,7 @@ public class RegisterController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         if (session != null && session.getAttribute("account") != null) {
-            resp.sendRedirect(req.getContextPath() + "/home"); // Nếu đã đăng nhập, redirect về home
+            resp.sendRedirect(req.getContextPath() + "/home"); 
             return;
         }
         req.getRequestDispatcher("WEB-INF/views/register.jsp").forward(req, resp);
@@ -57,10 +57,10 @@ public class RegisterController extends HttpServlet {
         user.setEmail(email);
         user.setFullName(fullName);
         user.setPhone(phone);
-        user.setAvatar(null); // Mặc định không có avatar
-        user.setRoleid(3); // Mặc định role user thường (có thể thay đổi)
+        user.setAvatar(null); 
+        user.setRoleid(3); 
 
         service.register(user);
-        resp.sendRedirect(req.getContextPath() + "/login"); // Redirect về login sau đăng ký thành công
+        resp.sendRedirect(req.getContextPath() + "/login"); 
     }
 }

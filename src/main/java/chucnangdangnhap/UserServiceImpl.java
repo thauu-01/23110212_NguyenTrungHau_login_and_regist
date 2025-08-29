@@ -3,7 +3,7 @@ package chucnangdangnhap;
 public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDaoImpl();
 
-    // Các hàm từ ví dụ 1
+  
     @Override
     public User login(String username, String password) {
         User user = this.get(username);
@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
         return userDao.get(username);
     }
 
-    // Implement hàm mới
+   
     @Override
     public void register(User user) {
         userDao.insert(user);

@@ -10,10 +10,10 @@ public class UserDaoImpl implements UserDao {
     public PreparedStatement ps = null;
     public ResultSet rs = null;
 
-    // Hàm từ ví dụ 1
+   
     @Override
     public User get(String username) {
-        // Code từ ví dụ 1
+       
         String sql = "SELECT * FROM [User] WHERE username = ? ";
         try {
             conn = new DBConnection().getConnection();
@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
-    // Implement hàm mới: Insert user
+   
     @Override
     public void insert(User user) {
         String sql = "INSERT INTO [User] (email, username, fullname, password, avatar, roleid, phone, createdDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -60,7 +60,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    // Implement hàm mới: Kiểm tra username tồn tại
+   
     @Override
     public boolean checkExistUsername(String username) {
         boolean duplicate = false;
