@@ -1,3 +1,4 @@
+
 package chucnangdangnhap;
 
 import java.io.IOException;
@@ -21,7 +22,6 @@ public class LoginController extends HttpServlet {
             return;
         }
 
-        // Check cookie
         Cookie[] cookies = req.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -41,8 +41,10 @@ public class LoginController extends HttpServlet {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
+        String username = req.getParameter("username") != null ? req.getParameter("username").trim() : "";
+        String password = req.getParameter("password") != null ? req.getParameter("password").trim() : "";
+        System.out.println("Username nhập: [" + username + "]");
+        System.out.println("Password nhập: [" + password + "]");
         boolean isRememberMe = false;
         String remember = req.getParameter("remember");
 
@@ -75,7 +77,7 @@ public class LoginController extends HttpServlet {
     }
 
     private void saveRemeberMe(HttpServletResponse response, String username) {
-        Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER, username);  
+        Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER, username);
         cookie.setMaxAge(30 * 60);
         response.addCookie(cookie);
     }

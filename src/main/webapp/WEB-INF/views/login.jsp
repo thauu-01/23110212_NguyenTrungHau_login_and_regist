@@ -5,12 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Đăng Nhập</title>
-    <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
-        /* CSS tùy chỉnh để giống hình ảnh */
+
         .login-container {
             max-width: 400px;
             margin: 50px auto;
@@ -39,7 +37,7 @@
             margin-left: 5px;
         }
         .login-container h2 {
-            font-size: 1.5rem; /* Kích thước nhỏ hơn một chút */
+            font-size: 1.5rem; 
             text-align: center;
         }
     </style>
@@ -65,7 +63,8 @@
             </div>
             <button type="submit" class="btn btn-primary">Đăng nhập</button>
             <div class="text-center mt-2">
-                <small>Chưa có tài khoản? <a href="${pageContext.request.contextPath}/register">Đăng ký</a></small>
+                <small>Chưa có tài khoản? <a href="${pageContext.request.contextPath}/register">Đăng ký</a></small> | 
+                <small><a href="${pageContext.request.contextPath}/forgetPassword">Quên mật khẩu?</a></small>
             </div>
         </form>
     </div>
