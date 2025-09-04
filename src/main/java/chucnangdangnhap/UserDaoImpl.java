@@ -13,7 +13,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User get(String username) {
-        String sql = "SELECT * FROM [User] WHERE username = ?";
+        String sql = "SELECT * FROM Users WHERE username = ?";
         try {
             conn = new DBConnection().getConnection();
             ps = conn.prepareStatement(sql);
@@ -37,17 +37,13 @@ public class UserDaoImpl implements UserDao {
             System.out.println("Không tìm thấy user với username: " + username);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try { if (rs != null) rs.close(); } catch (Exception e) {}
-            try { if (ps != null) ps.close(); } catch (Exception e) {}
-            try { if (conn != null) conn.close(); } catch (Exception e) {}
         }
         return null;
     }
 
     @Override
     public void insert(User user) {
-        String sql = "INSERT INTO [User] (email, username, fullname, password, avatar, roleid, phone, createdDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Users (email, username, fullname, password, avatar, roleid, phone, createdDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = new DBConnection().getConnection();
             ps = conn.prepareStatement(sql);
@@ -72,7 +68,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean checkExistUsername(String username) {
         boolean duplicate = false;
-        String sql = "SELECT * FROM [User] WHERE username = ?";
+        String sql = "SELECT * FROM Users WHERE username = ?";
         try {
             conn = new DBConnection().getConnection();
             ps = conn.prepareStatement(sql);
@@ -94,7 +90,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findByEmail(String email) {
-        String sql = "SELECT * FROM [User] WHERE email = ?";
+        String sql = "SELECT * FROM Users WHERE email = ?";
         try {
             conn = new DBConnection().getConnection();
             ps = conn.prepareStatement(sql);
@@ -127,7 +123,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean resetPassword(String email, String newPassword) {
-        String sql = "UPDATE [User] SET password = ? WHERE email = ?";
+        String sql = "UPDATE Users SET password = ? WHERE email = ?";
         try {
             conn = new DBConnection().getConnection();
             ps = conn.prepareStatement(sql);
@@ -144,4 +140,16 @@ public class UserDaoImpl implements UserDao {
         }
         return false;
     }
+    
+    public static void main(String[] args) {
+	    try {
+	        UserDao userDao = new UserDaoImpl();
+	        System.out.println(userDao.get("hau"));
+	    }
+	    catch(Exception e) {
+	    	e.printStackTrace();
+	    }
+	    
+	}
+    
 }

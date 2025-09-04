@@ -14,6 +14,9 @@ import jakarta.servlet.http.HttpSession;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends HttpServlet {
+	
+	UserService service = new UserServiceImpl();
+	
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
@@ -59,8 +62,8 @@ public class LoginController extends HttpServlet {
             req.getRequestDispatcher("WEB-INF/views/login.jsp").forward(req, resp);
             return;
         }
-        UserService service = new UserServiceImpl();
-        User user = service.login(username, password);
+        
+        User user = service.login(username, password);      
 
         if (user != null) {
             HttpSession session = req.getSession(true);

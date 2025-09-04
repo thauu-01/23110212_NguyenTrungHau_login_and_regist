@@ -4,11 +4,27 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
+
+    private final String serverName = "localhost";
+    private final String dbName = "hau";
+    private final String portNumber = "1433";
+    private final String instance = ""; 
+
+ 
     public Connection getConnection() throws Exception {
+        String url = "jdbc:sqlserver://" + serverName + "\\" + instance + ":" + portNumber + ";integratedSecurity=true;databaseName=" + dbName + ";encrypt=false";
+        if (instance == null || instance.trim().isEmpty()) {
+            url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";integratedSecurity=true;databaseName=" + dbName + ";encrypt=false";
+        }
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=hau;encrypt=false";    
-        String user = "hau";
-        String pass = "123";
-        return DriverManager.getConnection(url, user, pass);
+        return DriverManager.getConnection(url);
+    }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println(new DBConnection().getConnection());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
